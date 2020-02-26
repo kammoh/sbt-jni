@@ -2,10 +2,11 @@
 
 | sbt version | plugin version |
 |-------------|----------------|
-| 0.13.x      | [![Download](https://api.bintray.com/packages/jodersky/sbt-plugins/sbt-jni/images/download.svg?version=1.2.6)](https://bintray.com/jodersky/sbt-plugins/sbt-jni/1.2.6/link) |
-| 1.x       | [![Download](https://api.bintray.com/packages/jodersky/sbt-plugins/sbt-jni/images/download.svg)](https://bintray.com/jodersky/sbt-plugins/sbt-jni/_latestVersion) |
+| 1.x      |![Sonatype Nexus (Snapshots)](https://badges.genua.fr/nexus/s/xyz.kamyar/sbt-jni-macros_2.12?server=https%3A%2F%2Foss.sonatype.org&style=plastic) |
 
 # sbt-jni
+
+fork of jodersky/sbt-jni
 
 A suite of sbt plugins for simplifying creation and distribution of JNI programs.
 
@@ -32,7 +33,7 @@ The second point, portability, is inherent to JNI and thus unavoidable. However 
 All plugins are made available by adding the following to `project/plugins.sbt`:
 ```scala
 
-addSbtPlugin("ch.jodersky" % "sbt-jni" % "<latest version>")
+addSbtPlugin("xyz.kamyar" % "sbt-jni" % "<latest version>")
 ```
 where `<latest version>` refers to the version indicated by the download badge above, or, equivalently, to the [latest version available on bintray](https://bintray.com/jodersky/sbt-plugins/sbt-jni/_latestVersion).
 
