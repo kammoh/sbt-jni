@@ -1,11 +1,13 @@
 package ch.jodersky.sbt.jni
 package plugins
 
+import java.nio.file.Paths
+
 import collection.JavaConverters._
 import util.BytecodeUtil
+
 import sbt._
 import sbt.Keys._
-import sys.process._
 
 /** Adds `javah` header-generation functionality to projects. */
 object JniJavah extends AutoPlugin {
@@ -51,25 +53,20 @@ object JniJavah extends AutoPlugin {
         (compile in Compile).value; Seq((classDirectory in Compile).value)
       }
 
-      val cp = jcp.mkString(sys.props("path.separator"))
       val log = streams.value.log
 
       val classes = (javahClasses in javah).value
-      if (!classes.isEmpty) {
+      if (classes.nonEmpty) {
         log.info("Headers will be generated to " + out.getAbsolutePath)
       }
-      for (clazz <- classes) {
-        log.info("Generating header for " + clazz)
-        val parts = Seq(
-          "javah",
-          "-d", out.getAbsolutePath,
-          "-classpath", cp,
-          clazz
-        )
-        val cmd = parts.mkString(" ")
-        val ev = Process(cmd) ! log
-        if (ev != 0) sys.error(s"Error occured running javah. Exit code: ${ev}")
-      }
+
+      val task = new ch.jodersky.sbt.jni.javah.JavahTask
+      classes.foreach(task.addClass(_))  
+      jcp.map(_.toPath).foreach(task.addClassPath(_))
+      task.addRuntimeSearchPath()
+      task.setOutputDir(Paths.get(out.getAbsolutePath))
+      task.run()
+
       out
     }
   )
