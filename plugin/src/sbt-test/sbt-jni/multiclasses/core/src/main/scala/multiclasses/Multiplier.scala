@@ -1,6 +1,6 @@
 package multiclasses
 
-import ch.jodersky.jni.nativeLoader
+import xyz.kamyar.jni.nativeLoader
 
 @nativeLoader("multiplier1")
 abstract class Multiplier {

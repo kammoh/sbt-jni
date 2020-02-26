@@ -1,6 +1,6 @@
 package multiclasses
 
-import ch.jodersky.jni.nativeLoader
+import xyz.kamyar.jni.nativeLoader
 
 case class Value(x: Int)
 

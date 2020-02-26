@@ -1,6 +1,6 @@
 package simple
 
-import ch.jodersky.jni.nativeLoader
+import xyz.kamyar.jni.nativeLoader
 
 @nativeLoader("demo0")
 object Library {
