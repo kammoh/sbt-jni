@@ -1,11 +1,11 @@
 import scala.sys.process._
 
-val scalaVersions = Seq("2.13.0", "2.12.8", "2.11.12")
-val macrosParadiseVersion = "2.1.0"
+val scalaVersions = Seq("2.13.0", "2.12.10", "2.11.12")
+val macrosParadiseVersion = "2.1.1"
 
 // version is derived from latest git tag
 version in ThisBuild := ("git describe --always --dirty=-SNAPSHOT --match v[0-9].*" !!).tail.trim
-organization in ThisBuild := "ch.jodersky"
+organization in ThisBuild := "xyz.kamyar"
 scalacOptions in ThisBuild ++= Seq(
   "-deprecation",
   "-feature",
